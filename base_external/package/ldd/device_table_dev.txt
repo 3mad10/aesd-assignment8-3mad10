@@ -1,0 +1,4 @@
+/etc/scull/scull_load f 755 0 0 - - - - -
+/etc/scull/scull_unload f 755 0 0 - - - - -
+/etc/misc-modules/module_load f 755 0 0 - - - - -
+/etc/misc-modules/module_unload f 755 0 0 - - - - -

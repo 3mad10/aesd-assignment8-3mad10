@@ -1,0 +1,42 @@
+#! /bin/sh
+
+case "$1" in
+  start)
+     echo -n "Loading Scull"
+     chmod 775 /etc/scull_load
+     chmod 775 /etc/module_load
+     chmod 775 /etc/scull_unload
+     chmod 775 /etc/module_unload
+
+     /etc/scull_load
+     echo "."
+
+     echo -n "Loading Faulty"
+     /etc/module_load
+     echo "."
+
+     echo "Loading Hello"
+     modprobe hello
+     echo "."
+
+     ;;
+  stop)
+     echo -n "Unloading Scull"
+     /etc/scull/scull_unload
+     echo "."
+
+     echo -n "Unloading Faulty"
+     /etc/misc-modules/module_unload
+     echo "."
+
+     echo "Unloading Hello"
+     rmmod hello
+     echo "."
+
+     ;;
+  *)
+     echo "Usage: $0 {start|stop|restart|force-reload}"
+     exit 1
+esac
+
+exit 0
