@@ -7,12 +7,17 @@ case "$1" in
      chmod 775 /etc/module_load
      chmod 775 /etc/scull_unload
      chmod 775 /etc/module_unload
+     chmod 775 /etc/aesdchar_load
 
      /etc/scull_load
      echo "."
 
-     echo -n "Loading Faulty"
+     echo "Loading Faulty"
      /etc/module_load
+     echo "."
+
+     echo "Loading Aesd char driver"
+     /etc/aesdchar_load
      echo "."
 
      echo "Loading Hello"
@@ -21,16 +26,20 @@ case "$1" in
 
      ;;
   stop)
-     echo -n "Unloading Scull"
+     echo "Unloading Scull"
      /etc/scull/scull_unload
      echo "."
 
-     echo -n "Unloading Faulty"
+     echo "Unloading Faulty"
      /etc/misc-modules/module_unload
      echo "."
 
      echo "Unloading Hello"
      rmmod hello
+     echo "."
+
+     echo "Unloading Aesd char driver"
+     /etc/aesdchar_unload
      echo "."
 
      ;;
